@@ -179,7 +179,14 @@ The cleaned tables were related into a **hybrid star and snowflake schema** with
 
 SalesRep, Geography, Products, and the calendar relate directly to the fact, forming the star portion of the model. Category is intentionally not attached to the fact directly; instead it reaches the fact through a chain — `DimCategory` to `DimSubCategory` to `DimProducts` to `FactSales` — which forms the snowflake arm. This is precisely why the cleanup of the SubCategory key was critical: that key is the link that allows category-level filters to propagate all the way down to individual sales rows.
 
+<details>
+<summary><strong>View data model</strong></summary>
+
+<br>
+
 ![Data Model](data-model/data_model.png)
+
+</details>
 
 ---
 
