@@ -1,4 +1,4 @@
-# Retail Sales Analysis — Power BI Business Intelligence Report
+# Retail Sales Analysis — Power BI Report
 
 An end-to-end business intelligence project analysing retail sales performance for a company operating across **Germany, the Czech Republic, and Denmark** over **fiscal years 2014 to 2017**. The project covers the complete analytics lifecycle: extracting data from multiple disconnected sources, cleaning and transforming it, modelling it into a coherent schema, building the calculation layer, and presenting the findings through an interactive nine-page report.
 
