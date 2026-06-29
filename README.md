@@ -179,9 +179,7 @@ The cleaned tables were related into a **hybrid star and snowflake schema** with
 
 SalesRep, Geography, Products, and the calendar relate directly to the fact, forming the star portion of the model. Category is intentionally not attached to the fact directly; instead it reaches the fact through a chain — `DimCategory` to `DimSubCategory` to `DimProducts` to `FactSales` — which forms the snowflake arm. This is precisely why the cleanup of the SubCategory key was critical: that key is the link that allows category-level filters to propagate all the way down to individual sales rows.
 
-> **Data model screenshot**
->
-> ![Data Model](outputs/data-model.png)
+![Data Model](data-model/data_model.png)
 
 ---
 
@@ -251,46 +249,84 @@ The calculation layer is deliberately split between **calculated columns** (comp
 
 ## Outputs
 
-The final report spans nine pages, moving from a high-level introduction through detailed drill-downs to a closing summary. Insert each page screenshot in its slot below.
+The final report spans nine pages, moving from a high-level introduction through detailed drill-downs to a closing summary. Expand each page to view its screenshot.
 
-<details open>
-<summary><strong>View all report pages</strong></summary>
+<details>
+<summary><strong>1. Introduction</strong> — project scope, business questions, and data coverage</summary>
 
 <br>
 
-**1. Introduction** — project scope, business questions, and data coverage
-
 ![Introduction](outputs/01-introduction.png)
 
-**2. Overall Stats** — revenue, cost, and gross profit KPI cards
+</details>
+
+<details>
+<summary><strong>2. Overall Stats</strong> — revenue, cost, and gross profit KPI cards</summary>
+
+<br>
 
 ![Overall Stats](outputs/02-overall-stats.png)
 
-**3. Revenue by Country/Year** — revenue waterfall with country, year, and month slicers
+</details>
+
+<details>
+<summary><strong>3. Revenue by Country/Year</strong> — revenue waterfall with country, year, and month slicers</summary>
+
+<br>
 
 ![Revenue by Country/Year](outputs/03-revenue-by-country-year.png)
 
-**4. MoM and QoQ Growth** — Month-over-Month and Quarter-over-Quarter trend lines
+</details>
+
+<details>
+<summary><strong>4. MoM and QoQ Growth</strong> — Month-over-Month and Quarter-over-Quarter trend lines</summary>
+
+<br>
 
 ![MoM and QoQ Growth](outputs/04-mom-qoq-growth.png)
 
-**5. Top Sales Representatives** — leading representatives by gross profit
+</details>
+
+<details>
+<summary><strong>5. Top Sales Representatives</strong> — leading representatives by gross profit</summary>
+
+<br>
 
 ![Top Sales Representatives](outputs/05-top-sales-reps.png)
 
-**6. Country/Town-wise Performance** — revenue, units, transactions, and profit by country
+</details>
+
+<details>
+<summary><strong>6. Country/Town-wise Performance</strong> — revenue, units, transactions, and profit by country</summary>
+
+<br>
 
 ![Country/Town Performance](outputs/06-country-town-performance.png)
 
-**7. Category / Sub-Category KPIs** — performance split across the Special and General categories
+</details>
+
+<details>
+<summary><strong>7. Category / Sub-Category KPIs</strong> — performance split across the Special and General categories</summary>
+
+<br>
 
 ![Category KPIs](outputs/07-category-kpi.png)
 
-**8. Product Price Range KPIs** — performance split across Low, Medium, and High Value tiers
+</details>
+
+<details>
+<summary><strong>8. Product Price Range KPIs</strong> — performance split across Low, Medium, and High Value tiers</summary>
+
+<br>
 
 ![Price Range KPIs](outputs/08-price-range-kpi.png)
 
-**9. Conclusion** — strategic review and recommendations
+</details>
+
+<details>
+<summary><strong>9. Conclusion</strong> — strategic review and recommendations</summary>
+
+<br>
 
 ![Conclusion](outputs/09-conclusion.png)
 
@@ -323,22 +359,23 @@ A fuller write-up of trends, results, and their business relevance is available 
 ## Repository Structure
 
 ```
-sales-demo-analysis-powerbi/
+Retail_Sales_Analysis_Power_BI/
 ├── README.md
 ├── business-questions/
 │   └── Business_Questions.pdf
 ├── data/
-│   └── raw/
-│       ├── sales/
-│       │   ├── sales 2014.csv
-│       │   ├── sales 2015.csv
-│       │   ├── sales 2016.csv
-│       │   └── sales 2017.csv
-│       ├── Categories.xlsx
-│       ├── SubCategories.xlsx
-│       ├── SalesRep.xlsx
-│       ├── Products.csv
-│       └── Geography.csv
+│   ├── sales/
+│   │   ├── Sales 2014.csv
+│   │   ├── sales 2015.csv
+│   │   ├── sales 2016.csv
+│   │   └── sales 2017.csv
+│   ├── Categories.xlsx
+│   ├── Geography.xlsx
+│   ├── Product.csv
+│   ├── SalesRep.xlsx
+│   └── SubCategories.xlsx
+├── data-model/
+│   └── data_model.png
 ├── report/
 │   └── RetailSalesAnalysis.pbix
 ├── outputs/
@@ -361,11 +398,11 @@ sales-demo-analysis-powerbi/
 
 1. Install [Power BI Desktop](https://powerbi.microsoft.com/desktop/) (free).
 2. Clone the repository:
-   ```bash
-   git clone https://github.com/<your-username>/sales-demo-analysis-powerbi.git
-   ```
+```bash
+   git clone https://github.com/<your-username>/Retail_Sales_Analysis_Power_BI.git
+```
 3. Open `report/RetailSalesAnalysis.pbix` in Power BI Desktop.
-4. The raw source files are provided under `data/raw/` so the model can be inspected and refreshed. If you reproduce the pipeline, update the source paths under **Transform data, Data source settings** to point at your local copies, and provide your own PostgreSQL connection for the products table.
+4. The raw source files are provided under `data/` so the model can be inspected and refreshed. If you reproduce the pipeline, update the source paths under **Transform data, Data source settings** to point at your local copies, and provide your own PostgreSQL connection for the products table.
 
 ---
 
